@@ -31,13 +31,7 @@ EOF
 function NIC_Tweaking {
     normal_1; echo "Optimizing NIC Configuration"
     warn_1; echo "Some Configurations might not be supported by the NIC"; warn_2
-    interface=$(ip -o -4 route show to default | awk '{print $5}')
-    ethtool -G $interface rx 1024
-    sleep 1
-    ethtool -G $interface tx 2048
-    sleep 1
-    ethtool -K $interface tso off gso off
-    sleep 1
+
 }
 function Network_Other_Tweaking {
     normal_1; echo "Doing other Network Tweaking"; warn_2
