@@ -48,6 +48,7 @@ function autoremove-torrents {
     apt-get -qqy install python3-distutils python3-apt
     [[ $(pip --version) ]] || (apt-get -qqy install curl && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py && rm get-pip.py )
     pip -q install autoremove-torrents
+    curl -Ls https://gitlab.com/AlexKM/qbittools/-/raw/master/install.sh | sudo bash
     tput sgr0; clear
     need_input
     read -p "Enter desired reserved storage (in GiB): " diskspace
