@@ -49,6 +49,24 @@ function autoremove-torrents {
     [[ $(pip --version) ]] || (apt-get -qqy install curl && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py && rm get-pip.py )
     pip -q install autoremove-torrents
     curl -Ls https://gitlab.com/AlexKM/qbittools/-/raw/master/install.sh | sudo bash
+    cat << EOF >>/etc/systemd/system/qbittools-reannounce.service
+[Unit]
+Description=qbittools reannounce
+After=qbittorrent@%i.service
+
+[Service]
+User=root
+Group=root
+ExecStart=/usr/local/bin/qbittools reannounce -s 127.0.0.1 -p 8080 -U hell -p 123
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    
     tput sgr0; clear
     need_input
     read -p "Enter desired reserved storage (in GiB): " diskspace
@@ -89,21 +107,18 @@ EOF
         warn_2
         touch $HOME/.config.yml
         cat << EOF >>$HOME/.config.yml
-General-qb:          
+my_task:
   client: qbittorrent
-  host: http://127.0.0.1:$qbport
-  username: $username
-  password: $password
+  host: http://127.0.0.1:8080
+  username: hell
+  password: 123
   strategies:
-    Upload:
-      status:
-        - Uploading
-      remove: upload_speed < 1024 and seeding_time > $seedtime
-    Disk:
+    my_strategy:
       free_space:
-        min: $diskspace
-        path: /home/$username/
-        action: remove-old-seeds
+        min: 50
+        path: /home/hell/qbittorrent/Downloads/
+        action: remove-slow-upload-seeds
+
   delete_data: true
 EOF
     fi
