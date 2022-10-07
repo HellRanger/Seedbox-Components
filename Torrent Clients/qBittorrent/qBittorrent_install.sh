@@ -72,7 +72,7 @@ EOF
     normal_1; echo "Installed Webmin"
     curl -Ls https://gitlab.com/AlexKM/qbittools/-/raw/master/install.sh | sudo bash
     normal_1; echo "Installed qbittools"
-    cat << EOF >>/etc/systemd/system/qbittools-reannounce.service
+    cat << EOF >/etc/systemd/system/qbittools-reannounce.service
 [Unit]
 Description=qbittools reannounce
 After=qbittorrent@%i.service
