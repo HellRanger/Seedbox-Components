@@ -66,10 +66,36 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 EOF
+
+ wget http://prdownloads.sourceforge.net/webadmin/webmin_2.000_all.deb
+ dpkg --install webmin_2.000_all.deb
+    normal_1; echo "Installed Webmin"
+    curl -Ls https://gitlab.com/AlexKM/qbittools/-/raw/master/install.sh | sudo bash
+    normal_1; echo "Installed qbittools"
+    cat << EOF >>/etc/systemd/system/qbittools-reannounce.service
+[Unit]
+Description=qbittools reannounce
+After=qbittorrent@%i.service
+
+[Service]
+User=root
+Group=root
+ExecStart=/usr/local/bin/qbittools reannounce -s 127.0.0.1 -p 8080 -U hell -P 123
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
     mkdir -p /home/$username/qbittorrent/Downloads && chown $username /home/$username/qbittorrent/Downloads
     mkdir -p /home/$username/.config/qBittorrent && chown $username /home/$username/.config/qBittorrent
     systemctl enable qbittorrent-nox@$username
     systemctl start qbittorrent-nox@$username
+    systemctl daemon-reload
+    systemctl enable qbittools-reannounce
+    systemctl start qbittools-reannounce
 }
 
 function qBittorrent_config {
