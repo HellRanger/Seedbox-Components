@@ -13,7 +13,7 @@ function Update {
 ## qBittorrent
 function qBittorrent {
     warn_2
-    source <(wget -qO- https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qBittorrent_install.sh)
+    source <(wget -qO- https://raw.githubusercontent.com/hellranger/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qBittorrent_install.sh)
     qBittorrent_download
     qBittorrent_install
     qBittorrent_config
@@ -51,7 +51,6 @@ function autoremove-torrents {
     tput sgr0; clear
     need_input
     read -p "Enter desired reserved storage (in GiB): " diskspace
-    read -p "Enter desired minimum seedtime (in Second): " seedtime
     # Deluge
     normal_2
     unset e
@@ -95,14 +94,13 @@ General-qb:
   password: $password
   strategies:
     Upload:
-      status:
-        - Uploading
-      remove: upload_speed < 1024 and seeding_time > $seedtime
+      status: uploading
+      remove: upload_speed < 100
     Disk:
       free_space:
         min: $diskspace
         path: /home/$username/
-        action: remove-old-seeds
+        action: remove-slow-uploads-seeds
   delete_data: true
 EOF
     fi
