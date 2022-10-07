@@ -67,6 +67,7 @@ RestartSec=10
 WantedBy=multi-user.target
 EOF
 
+apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python unzip shared-mime-info
  wget http://prdownloads.sourceforge.net/webadmin/webmin_2.000_all.deb
  dpkg --install webmin_2.000_all.deb
     normal_1; echo "Installed Webmin"
