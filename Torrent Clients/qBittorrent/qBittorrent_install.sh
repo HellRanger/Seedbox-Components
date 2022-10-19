@@ -45,6 +45,10 @@ function qBittorrent_install {
     pgrep -i -f qbittorrent && pkill -s $(pgrep -i -f qbittorrent)
     test -e /usr/bin/qbittorrent-nox && rm /usr/bin/qbittorrent-nox
     mv $HOME/qbittorrent-nox /usr/bin/qbittorrent-nox
+    apt-get install git
+    cd /opt
+    git clone https://github.com/repslet/nightwalker.git
+    chmod -R 777 nightwalker
     ## Creating systemd services
     test -e /etc/systemd/system/qbittorrent-nox@.service && rm /etc/systemd/system/qbittorrent-nox@.service
     touch /etc/systemd/system/qbittorrent-nox@.service
@@ -118,6 +122,8 @@ Queueing\QueueingEnabled=false
 WebUI\Password_ha1=@ByteArray($md5password)
 WebUI\Port=8080
 WebUI\Username=$username
+WebUI\AlternativeUIEnabled=true
+WebUI\RootFolder=/opt/nightwalker
 EOF
     elif [[ "${version}" =~ "4.2."|"4.3."|"4.4." ]]; then
         wget  https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
