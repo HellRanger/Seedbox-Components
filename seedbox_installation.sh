@@ -96,9 +96,6 @@ General-qb:
   username: $username
   password: $password
   strategies:
-    Upload:
-      status: uploading
-      remove: upload_speed < 100
     Disk:
       free_space:
         min: $diskspace
@@ -115,7 +112,7 @@ EOF
 
 while true; do
   /usr/local/bin/autoremove-torrents --conf=$HOME/.config.yml --log=$HOME/.autoremove-torrents
-  sleep 5
+  sleep 120
 done
 EOF
     chmod +x $HOME/.autoremove.sh
