@@ -118,5 +118,5 @@ EOF
     chmod +x $HOME/.autoremove.sh
     normal_2
     apt-get -qqy install screen
-    screen -dmS autoremove-torrents $HOME/.autoremove.sh
+    screen -dmS autoremove-torrents /root/.autoremove.sh
 }
