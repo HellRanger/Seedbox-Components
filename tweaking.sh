@@ -36,8 +36,6 @@ function NIC_Tweaking {
     sleep 1
     ethtool -G $interface tx 2048
     sleep 1
-    ethtool -K $interface tso off gso off
-    sleep 1
 }
 function Network_Other_Tweaking {
     normal_1; echo "Doing other Network Tweaking"; warn_2
