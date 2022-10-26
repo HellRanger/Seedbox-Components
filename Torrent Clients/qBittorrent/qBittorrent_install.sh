@@ -5,7 +5,7 @@ function qBittorrent_download {
     do
         case $opt in
             "qBittorrent 4.4.5 - libtorrent-2.0.8 (or latest)")
-                version=4.4.5; wget https://github.com/userdocs/qbittorrent-nox-static/releases/latest/download/x86_64-qbittorrent-nox; break
+                version=4.4.5; wget https://github.com/userdocs/qbittorrent-nox-static/releases/latest/download/x86_64-qbittorrent-nox && chmod +x $HOME/x86_64-qbittorrent-nox; break
                 ;;
             "qBittorrent 4.1.9 - libtorrent-1_1_14")
                 version=4.1.9; wget https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qBittorrent/qBittorrent%204.1.9%20-%20libtorrent-1_1_14/qbittorrent-nox && chmod +x $HOME/qbittorrent-nox; break
