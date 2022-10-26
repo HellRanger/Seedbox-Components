@@ -36,7 +36,7 @@ function NIC_Tweaking {
     sleep 1
     ethtool -G $interface tx 2048
     sleep 1
-    ethtool -K $interface tso on gso on
+    ethtool -K $interface tso off gso off
     sleep 1
 }
 function Network_Other_Tweaking {
