@@ -146,6 +146,8 @@ Queueing\QueueingEnabled=false
 WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
 WebUI\Port=8080
 WebUI\Username=$username
+WebUI\AlternativeUIEnabled=true
+WebUI\RootFolder=/opt/nightwalker
 EOF
     rm qb_password_gen
     fi
