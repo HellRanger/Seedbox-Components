@@ -47,7 +47,7 @@ function qBittorrent_install {
     ## Shut down qBittorrent if it has been already installed
     pgrep -i -f qbittorrent && pkill -s $(pgrep -i -f qbittorrent)
     test -e /usr/bin/qbittorrent-nox && rm /usr/bin/qbittorrent-nox
-    mv $HOME/x86_64-qbittorrent-nox /usr/bin/qbittorrent-nox
+    mv $HOME/qbittorrent-nox /usr/bin/qbittorrent-nox
     apt-get install git
     cd /opt
     git clone https://github.com/repslet/nightwalker.git
