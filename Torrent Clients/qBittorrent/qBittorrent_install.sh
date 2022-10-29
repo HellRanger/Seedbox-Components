@@ -119,8 +119,7 @@ Queueing\QueueingEnabled=false
 WebUI\Password_ha1=@ByteArray($md5password)
 WebUI\Port=8080
 WebUI\Username=$username
-WebUI\AlternativeUIEnabled=true
-WebUI\RootFolder=/opt/nightwalker
+
 EOF
     elif [[ "${version}" =~ "4.2."|"4.3."|"4.4." ]]; then
         wget  https://raw.githubusercontent.com/jerry048/Seedbox-Components/main/Torrent%20Clients/qBittorrent/qb_password_gen && chmod +x $HOME/qb_password_gen
@@ -140,8 +139,7 @@ Queueing\QueueingEnabled=false
 WebUI\Password_PBKDF2="@ByteArray($PBKDF2password)"
 WebUI\Port=8080
 WebUI\Username=$username
-WebUI\AlternativeUIEnabled=true
-WebUI\RootFolder=/opt/nightwalker
+
 EOF
     rm qb_password_gen
     fi
