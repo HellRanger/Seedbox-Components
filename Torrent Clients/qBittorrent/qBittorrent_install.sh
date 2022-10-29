@@ -45,10 +45,7 @@ function qBittorrent_install {
     pgrep -i -f qbittorrent && pkill -s $(pgrep -i -f qbittorrent)
     test -e /usr/bin/qbittorrent-nox && rm /usr/bin/qbittorrent-nox
     mv $HOME/qbittorrent-nox /usr/bin/qbittorrent-nox
-    apt-get install git
-    cd /opt
-    git clone https://github.com/repslet/nightwalker.git
-    chmod -R 777 nightwalker
+
     ## Creating systemd services
     test -e /etc/systemd/system/qbittorrent-nox@.service && rm /etc/systemd/system/qbittorrent-nox@.service
     touch /etc/systemd/system/qbittorrent-nox@.service
