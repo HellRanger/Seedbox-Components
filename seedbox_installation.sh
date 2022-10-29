@@ -100,7 +100,7 @@ General-qb:
       free_space:
         min: $diskspace
         path: /home/$username/
-        action: remove-slow-uploads-seeds
+        action: remove-inactive-seeds
   delete_data: true
 EOF
     fi
