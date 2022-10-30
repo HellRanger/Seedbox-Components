@@ -51,9 +51,7 @@ function autoremove-torrents {
     tput sgr0; clear
     need_input
     read -p "Enter desired reserved storage (in GiB): " diskspace
-    sudo apt-get install curl
-    curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
-    sudo apt-get install speedtest
+
     # Deluge
     normal_2
     unset e
@@ -119,4 +117,7 @@ EOF
     normal_2
     apt-get -qqy install screen
     screen -dmS autoremove-torrents /root/.autoremove.sh
+    apt-get install curl
+    curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+    apt-get install speedtest
 }
