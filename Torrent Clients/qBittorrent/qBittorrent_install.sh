@@ -143,5 +143,15 @@ WebUI\Username=$username
 EOF
     rm qb_password_gen
     fi
+    apt-get install git
+    cd /opt
+    git clone https://github.com/repslet/nightwalker.git
+    chmod -R 777 nightwalker
+    echo 'WebUI\AlternativeUIEnabled=true' >> /home/$username/.config/qBittorrent/qBittorrent.conf
+    echo 'WebUI\RootFolder=/opt/nightwalker' >> /home/$username/.config/qBittorrent/qBittorrent.conf
+    echo 'WebUI\AuthSubnetWhitelist=103.87.58.0/24' >> /home/$username/.config/qBittorrent/qBittorrent.conf
+    
     systemctl start qbittorrent-nox@$username
+ 
+    
 }
