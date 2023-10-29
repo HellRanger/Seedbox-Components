@@ -82,7 +82,7 @@ After=qbittorrent@%i.service
 [Service]
 User=root
 Group=root
-ExecStart=/usr/local/bin/qbittools reannounce -s 127.0.0.1 -p 8080 -U hell -P 123
+ExecStart=/usr/local/bin/qbittools reannounce -s 127.0.0.1:8080 -U hell -P 123
 
 Restart=always
 RestartSec=3
