@@ -145,7 +145,7 @@ EOF
     fi
     apt-get install git
     cd /opt
-    git clone https://github.com/repslet/nightwalker.git
+    git clone https://github.com/CallMeBruce/nightwalker
     chmod -R 777 nightwalker
     echo 'WebUI\AlternativeUIEnabled=true' >> /home/$username/.config/qBittorrent/qBittorrent.conf
     echo 'WebUI\RootFolder=/opt/nightwalker' >> /home/$username/.config/qBittorrent/qBittorrent.conf
