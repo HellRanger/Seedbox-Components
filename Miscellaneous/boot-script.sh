@@ -14,6 +14,7 @@ sleep 1
 
 #Other 1
 /sbin/ifconfig $interface txqueuelen 10000
+sleep 1
 /usr/bin/screen -dmS autoremove-torrents /root/.autoremove.sh
 sleep 1
 #Other 2
